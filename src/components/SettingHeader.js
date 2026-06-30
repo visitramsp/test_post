@@ -1,10 +1,16 @@
-
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import { AppImages, Colors, Fonts } from '../res';
+import { View, Text, TouchableOpacity, Image, StyleSheet, StatusBar } from 'react-native';
+import { AppImages, Fonts } from '../res';
 
 const SettingHeader = ({ onBack, title, containerStyle }) => {
   return (
+    <>
+    
+     <StatusBar
+            barStyle="light-content" // white text/icons
+            backgroundColor="#000"   // Android background color
+          />
+          <View style={{ height: 50, backgroundColor: '#000' }} />
     <View style={[styles.header, containerStyle]}>
       <TouchableOpacity onPress={onBack} style={styles.backButton}>
         <Image source={AppImages.Back} style={styles.backIcon} />
@@ -14,6 +20,7 @@ const SettingHeader = ({ onBack, title, containerStyle }) => {
 
       <View style={styles.rightSpace} />
     </View>
+    </>
   );
 };
 
@@ -24,9 +31,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
     paddingRight: 20,
-    marginTop: 40,
-    backgroundColor:Colors.LIGHT_GRAY
-    // backgroundColor:"#F7F7F7"
+    paddingVertical: 8,
+    // marginTop: 40,
+    backgroundColor: '#FFFFFF',        // clean white — matches status bar area
+    borderBottomWidth: 1,
+    borderBottomColor: '#E8EDF2',       // subtle separator line
+    elevation: 3,                       // Android shadow
+    shadowColor: '#0D2B55',            // iOS shadow
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
   },
   backButton: {
     height: 40,
@@ -34,15 +48,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  backIcon: { height: 20, width: 20, tintColor: Colors.OFF_GREY },
-  bellIcon: { height: 24, width: 24, tintColor: Colors.BLACK },
+  backIcon: {
+    height: 20,
+    width: 20,
+    tintColor: '#434242',              // dark gray — visible on white
+  },
+  bellIcon: {
+    height: 24,
+    width: 24,
+    tintColor: '#0D2B55',             // navy — matches page theme
+  },
   headerTitle: {
     fontFamily: Fonts.instrumentSansMedium,
-    fontSize: 15,
-    color: "#434242",
+    fontSize: 16,
+    color: '#0D2B55',                  // navy — matches hero banner below
+    fontWeight: '600',
+    letterSpacing: 0.2,
   },
-   rightSpace: {
-    width: 40, 
+  rightSpace: {
+    width: 40,
   },
 });
 

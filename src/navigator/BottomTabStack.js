@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Image, View } from 'react-native';
+import { Image, StatusBar, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AppImages, Colors } from '../res';
 import Home from '../Dashboard/Home';
@@ -47,6 +47,12 @@ const BottomTabs = () => {
   );
 
   return (
+    <>
+    <StatusBar
+        translucent={false}
+        barStyle="dark-content"
+        backgroundColor="#000000"
+      />
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarHideOnKeyboard: true,
@@ -127,6 +133,7 @@ const BottomTabs = () => {
         }}
       />
     </Tab.Navigator>
+    </>
   );
 };
 

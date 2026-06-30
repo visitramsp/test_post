@@ -24,7 +24,7 @@ export default {
    exclamation: require('./icons/exclamation.png'),
    download: require('./icons/download.png'),
   charts: require('./icons/charts.png'),
-
+  menu: require('./icons/menu.png'),
   colonyGif: require('./icons/colony.gif'),
 };
 // exclamation.png 

@@ -15,7 +15,6 @@ import {
   Alert,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import MainHeader from '../components/MainHeader';
 
 // ─── Responsive helpers ───────────────────────────────────────────────────────
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -39,11 +38,6 @@ const formatDate = (date) => {
 const INITIAL_LEAVES = [
   { id: '1', from: '05-05-2026', to: '05-05-2026', reason: 'hii',  status: 'Pending'  },
   { id: '2', from: '14-05-2026', to: '14-05-2026', reason: 'None', status: 'Approved' },
-  { id: '3', from: '07-05-2026', to: '07-05-2026', reason: 'None', status: 'Pending'  },
-  { id: '3', from: '07-05-2026', to: '07-05-2026', reason: 'None', status: 'Pending'  },
-  { id: '3', from: '07-05-2026', to: '07-05-2026', reason: 'None', status: 'Pending'  },
-  { id: '3', from: '07-05-2026', to: '07-05-2026', reason: 'None', status: 'Pending'  },
-  { id: '3', from: '07-05-2026', to: '07-05-2026', reason: 'None', status: 'Pending'  },
   { id: '3', from: '07-05-2026', to: '07-05-2026', reason: 'None', status: 'Pending'  },
 ];
 
@@ -218,9 +212,9 @@ const ApplyLeaveModal = ({ visible, onClose, onSubmit }) => {
 };
 
 // ─── Main Screen ──────────────────────────────────────────────────────────────
-export default function ApplyLeave({ navigation }) {
+export default function LeaveApplyForm({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [leaves,setLeaves] = useState(INITIAL_LEAVES);
+  const [leaves,       setLeaves]       = useState(INITIAL_LEAVES);
 
   const handleSubmit = ({ from, to, reason }) => {
     const newEntry = {
@@ -235,11 +229,8 @@ export default function ApplyLeave({ navigation }) {
   };
 
   return (
-<>
-
     <SafeAreaView style={styles.safe}>
-     
-      <MainHeader/>
+      <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
 
       <ScrollView
         style={styles.scroll}
@@ -251,7 +242,7 @@ export default function ApplyLeave({ navigation }) {
           <View style={styles.iconCircle}>
             <Text style={styles.iconEmoji}>✉️</Text>
           </View>
-          <Text style={styles.title}>Request Leave hhh</Text>
+          <Text style={styles.title}>Request Leave</Text>
           <Text style={styles.subtitle}>Submit a New Leave Request.</Text>
 
           <TouchableOpacity
@@ -288,7 +279,6 @@ export default function ApplyLeave({ navigation }) {
         onSubmit={handleSubmit}
       />
     </SafeAreaView>
-    </>
   );
 }
 
@@ -296,7 +286,7 @@ export default function ApplyLeave({ navigation }) {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: '#F4F7FB',
+    backgroundColor: '#f0f4f8',
   },
   scroll: { flex: 1 },
   scrollContent: { paddingBottom: 40 },
